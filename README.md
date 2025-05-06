@@ -75,21 +75,41 @@ pip install -r requirements.txt
 2. 必要なAPIキーとトークンを取得
 
 ### 6. 環境変数の設定
-`@env.txt`ファイルをプロジェクトルートに作成:
-```
-# Discord設定
-DISCORD_TOKEN=your_discord_bot_token_here
 
-# X (Twitter) API設定
-X_CONSUMER_KEY=your_x_consumer_key_here
-X_CONSUMER_SECRET=your_x_consumer_secret_here
-X_ACCESS_TOKEN=your_x_access_token_here
-X_ACCESS_TOKEN_SECRET=your_x_access_token_secret_here
+⚠️ **セキュリティに関する重要な注意** ⚠️
 
-# Google Sheets設定
-SHEETS_CREDENTIALS_PATH=credentials/sheets_credentials.json
-SPREADSHEET_ID=your_spreadsheet_id_here
-```
+リポジトリには `@env.txt.example` というサンプルファイルが含まれています。**実際の認証情報は絶対にGitHubにアップロードしないでください。**
+
+1. リポジトリ内の `@env.txt.example` をコピーして `@env.txt` を作成します:
+   ```bash
+   cp @env.txt.example @env.txt
+   ```
+
+2. 作成した `@env.txt` ファイルを編集し、以下の項目を実際の値に置き換えます:
+   ```
+   # Discord設定
+   DISCORD_TOKEN=your_discord_bot_token_here
+
+   # X (Twitter) API設定
+   X_CONSUMER_KEY=your_x_consumer_key_here
+   X_CONSUMER_SECRET=your_x_consumer_secret_here
+   X_ACCESS_TOKEN=your_x_access_token_here
+   X_ACCESS_TOKEN_SECRET=your_x_access_token_secret_here
+
+   # Google Sheets設定
+   SHEETS_CREDENTIALS_PATH=credentials/sheets_credentials.json
+   SPREADSHEET_ID=your_spreadsheet_id_here
+   ```
+
+3. `.gitignore` ファイルに以下の行が含まれていることを確認してください:
+   ```
+   # 環境変数とシークレット
+   .env
+   @env.txt
+   credentials/*.json
+   ```
+
+このセキュリティ対策により、APIキーやトークンなどの機密情報がGitHubに公開されることを防止できます。
 
 ### 7. アプリケーションの起動
 サービスを起動するには、付属のバッチファイル `start.bat` (Windows) または `start.sh` (Linux) を使用してください。
@@ -214,12 +234,14 @@ https://docs.google.com/spreadsheets/d/1qFnaGxLLAw9KiQSMHHGBrgrByFE6RONqNx-Fr3eh
 Discord-X-Support-Hub/
 ├── README.md                # プロジェクト説明
 ├── requirements.txt         # 必要なPythonパッケージ
-├── @env.txt                 # 環境変数設定（実行時に.envとして読み込み）
+├── @env.txt.example         # 環境変数設定例（実際の値を入れて@env.txtとして使用）
+├── .gitignore               # Git除外設定（機密ファイルを保護）
 ├── setup.py                 # セットアップスクリプト
 ├── main.py                  # メインプログラム（常駐サービス）
 ├── start.bat                # Windows用起動スクリプト
+├── start.sh                 # Linux用起動スクリプト
 ├── credentials/             # API認証情報
-│   └── sheets_credentials.json  # Google Sheets認証キー
+│   └── README.md            # 認証情報の配置手順（実際のJSONは含まない）
 ├── discord_bot/             # Discordボット関連
 │   ├── bot.py               # Botクラス
 │   └── commands.py          # コマンド定義
