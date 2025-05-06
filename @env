@@ -1,0 +1,17 @@
+# Discord-X-Support-Hub 環境変数設定例
+# 実際に使用する前に、この例をもとに @env.txt ファイルを作成し、
+# 適切な値に置き換えてください。
+# 本ファイルは例示のみであり、実際のトークンやキーは含まれていません。
+
+# Discord設定
+DISCORD_TOKEN=your_discord_bot_token_here
+
+# X (Twitter) API設定
+X_CONSUMER_KEY=your_x_consumer_key_here
+X_CONSUMER_SECRET=your_x_consumer_secret_here
+X_ACCESS_TOKEN=your_x_access_token_here
+X_ACCESS_TOKEN_SECRET=your_x_access_token_secret_here
+
+# Google Sheets設定
+SHEETS_CREDENTIALS_PATH=credentials/sheets_credentials.json
+SPREADSHEET_ID=your_spreadsheet_id_here
