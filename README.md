@@ -225,7 +225,7 @@ pip install -r requirements.txt
 | top_category | 最多カテゴリ | product |
 
 
-### 以下は実際のスプレッドシートの例です。
+### 以下は実際のスプレッドシートの例です。(このスプレッドシートにもGASを組み込んでおります)
 https://docs.google.com/spreadsheets/d/1qFnaGxLLAw9KiQSMHHGBrgrByFE6RONqNx-Fr3ehEHw/edit?gid=1160669244#gid=1160669244
 
 ## ディレクトリ構成
